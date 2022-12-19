@@ -11,12 +11,14 @@ COPY go.* ./
 RUN go mod download && go mod verify
 
 COPY . .
+# RUN go build -v -o danilogo
 RUN go build -v -o /usr/local/bin/app ./...
 
 ## Deploy
 # Create a new release build stage
 # FROM gcr.io/distroless/base-debian10
-FROM alpine:3.9 
+# FROM alpine:3.9 
+FROM scratch 
 
 WORKDIR /
 
